@@ -25,9 +25,9 @@
         <StackPanel Grid.Row="0" Grid.Column="1">
             <TextBlock
                 Classes="H2"
-                Text="{Binding Settings.WelcomeWindowTitle}"
+                Text="{Binding Title}"
                 Theme="{DynamicResource TitleTextBlock}" />
-            <TextBlock FontWeight="Bold" Text="{Binding Settings.WelcomeWindowSubTitle}" />
+            <TextBlock FontWeight="Bold" Text="{Binding SubTitle}" />
         </StackPanel>
         <ProgressBar
             Grid.Row="1"

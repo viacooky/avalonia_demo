@@ -17,10 +17,11 @@ public partial class WelcomeWindow : SplashWindow
 
     protected override async Task<Window?> CreateNextWindow()
     {
+        var mainWindow = Ioc.Default.GetRequiredService<MainWindow>();
         // return DialogResult is true ? new MainWindow(){DataContext = new MainViewModel()} : null;
         if (DialogResult is true)
         {
-            return new MainWindow() { DataContext = new MainViewModel() };
+            return mainWindow;
         }
         else
         {

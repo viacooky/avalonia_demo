@@ -1,11 +1,8 @@
-using System;
+using System.Linq;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core.Plugins;
-using System.Linq;
-using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
-using AvaloniaDemo.Services;
 using AvaloniaDemo.ViewModels;
 using AvaloniaDemo.Views;
 using CommunityToolkit.Mvvm.DependencyInjection;
@@ -15,9 +12,7 @@ namespace AvaloniaDemo;
 
 public partial class App : Application
 {
-    public IServiceProvider  Services { get; set; }
-    
-    public new static App Current => (App)Application.Current;
+    private ServiceCollection _services = new();
 
     public override void Initialize()
     {
@@ -27,13 +22,10 @@ public partial class App : Application
     public override void OnFrameworkInitializationCompleted()
     {
         var mainWindow = new MainWindow() { DataContext = new MainViewModel() };
-        
-        // 注入服务
-        Services=new ServiceCollection().AddSingleton(new AppSettingsService())
-            .BuildServiceProvider();
-        // _services.AddSingleton(mainWindow);
 
-        // Ioc.Default.ConfigureServices(_services.BuildServiceProvider());
+        // 注入服务
+        _services.AddSingleton(mainWindow);
+        Ioc.Default.ConfigureServices(_services.BuildServiceProvider());
 
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
@@ -41,8 +33,7 @@ public partial class App : Application
             // More info: https://docs.avaloniaui.net/docs/guides/development-guides/data-validation#manage-validationplugins
             DisableAvaloniaDataAnnotationValidation();
 
-            var appSettings = App.Current.Services.GetRequiredService<AppSettingsService>();
-            if (appSettings.WelcomeWindowEnable)
+            if (AppSettings.WelcomeWindowEnable)
             {
                 desktop.MainWindow = new WelcomeWindow() { DataContext = new WelcomeWindowViewModel() };
             }

@@ -1,10 +1,6 @@
 ﻿using System;
-using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
-using Avalonia.Markup.Xaml;
-using AvaloniaDemo.Services;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace AvaloniaDemo.Views;
 
@@ -13,5 +9,13 @@ public partial class TitleBarRightView : UserControl
     public TitleBarRightView()
     {
         InitializeComponent();
+    }
+
+    private async void OpenRepo(object? sender, RoutedEventArgs e)
+    {
+        var top = TopLevel.GetTopLevel(this);
+        if (top is null) return;
+        var launcher = top.Launcher;
+        await launcher.LaunchUriAsync(new Uri(AppSettings.TitleBarGithubUrl));
     }
 }

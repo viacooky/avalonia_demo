@@ -1,33 +1,30 @@
 ﻿using System;
 using Avalonia.Threading;
-using AvaloniaDemo.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.DependencyInjection;
 using Irihi.Avalonia.Shared.Contracts;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace AvaloniaDemo.ViewModels;
 
-public partial class WelcomeWindowViewModel:ObservableObject, IDialogContext
+public partial class WelcomeWindowViewModel : ObservableObject, IDialogContext
 {
-    [ObservableProperty]
-    private AppSettingsService _settings = App.Current.Services.GetRequiredService<AppSettingsService>();
-    
+    [ObservableProperty] private string _title = AppSettings.WelcomeWindowTitle;
+    [ObservableProperty] private string _subTitle = AppSettings.WelcomeWindowSubTitle;
+
     [ObservableProperty] private double _progress;
-    
+
     private Random _r = new();
 
     public WelcomeWindowViewModel()
     {
         DispatcherTimer.Run(OnUpdate, TimeSpan.FromMilliseconds(20), DispatcherPriority.Default);
     }
-    
+
     private bool OnUpdate()
     {
         // 可以在这里加入耗时的初始化操作
         // ...
-        
-        Progress += Settings.WelcomeWindowLoadingSpeed * _r.NextDouble();
+
+        Progress += AppSettings.WelcomeWindowLoadingSpeed * _r.NextDouble();
         if (Progress <= 100)
         {
             return true;
@@ -38,11 +35,11 @@ public partial class WelcomeWindowViewModel:ObservableObject, IDialogContext
             return false;
         }
     }
-    
+
     public void Close()
     {
         RequestClose?.Invoke(this, false);
     }
-    
+
     public event EventHandler<object?>? RequestClose;
 }

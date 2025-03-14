@@ -1,6 +1,4 @@
-﻿using AvaloniaDemo.Services;
-using CommunityToolkit.Mvvm.ComponentModel;
-using Microsoft.Extensions.DependencyInjection;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace AvaloniaDemo.ViewModels;
 
