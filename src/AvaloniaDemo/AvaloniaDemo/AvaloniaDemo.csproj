@@ -26,6 +26,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Services\" />
+      <UpToDateCheckInput Remove="Themes\_index.axaml" />
+      <UpToDateCheckInput Remove="Themes\_index.axaml" />
     </ItemGroup>
 </Project>

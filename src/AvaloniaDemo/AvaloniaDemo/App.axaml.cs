@@ -3,6 +3,7 @@ using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
+using AvaloniaDemo.Services;
 using AvaloniaDemo.ViewModels;
 using AvaloniaDemo.Views;
 using CommunityToolkit.Mvvm.DependencyInjection;
@@ -19,14 +20,37 @@ public partial class App : Application
         AvaloniaXamlLoader.Load(this);
     }
 
+    /// <summary>
+    /// 初始化服务
+    /// </summary>
+    /// <param name="services"></param>
+    private void InitService(ServiceCollection services)
+    {
+        var menuService = new MenuService();
+        services.AddSingleton(menuService);//菜单服务
+        MainModule.Init(services,menuService);
+    }
+
+    /// <summary>
+    /// 初始化模块
+    /// </summary>
+    /// <param name="services"></param>
+    private void InitModule(ServiceCollection services)
+    {
+        
+    }
+
     public override void OnFrameworkInitializationCompleted()
     {
-        var mainWindow = new MainWindow() { DataContext = new MainViewModel() };
+        #region 注册服务
 
-        // 注入服务
-        _services.AddSingleton(mainWindow);
+        InitService(_services);
         Ioc.Default.ConfigureServices(_services.BuildServiceProvider());
 
+        #endregion
+
+        
+        var mainWindow = Ioc.Default.GetRequiredService<MainWindow>();
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             // Avoid duplicate validations from both Avalonia and the CommunityToolkit. 
@@ -34,13 +58,9 @@ public partial class App : Application
             DisableAvaloniaDataAnnotationValidation();
 
             if (AppSettings.WelcomeWindowEnable)
-            {
                 desktop.MainWindow = new WelcomeWindow() { DataContext = new WelcomeWindowViewModel() };
-            }
             else
-            {
                 desktop.MainWindow = mainWindow;
-            }
         }
         else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewPlatform)
         {

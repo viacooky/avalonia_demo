@@ -3,14 +3,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="32"
-             xmlns:u="https://irihi.tech/ursa"
-             x:Class="AvaloniaDemo.Views.TitleBarRightView">
+             
+             x:Class="AvaloniaDemo.Views.TitleBarLeftView">
     <StackPanel Orientation="Horizontal">
-        <u:IconButton
+        <Image
             Classes="Tertiary"
             Theme="{StaticResource BorderlessIconButton}"
-            Icon="{StaticResource SemiIconGithubLogo}"
-            Click="OpenRepo"/>
-        <u:ThemeToggleButton IsThreeState="False" Mode="Controller" />
+            Source="../Assets/logo.ico"/>
     </StackPanel>
 </UserControl>

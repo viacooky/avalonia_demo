@@ -16,5 +16,5 @@ public static class AppSettings
     /// <summary>
     /// loading加载速度 默认3x
     /// </summary>
-    public static int WelcomeWindowLoadingSpeed => 5;
+    public static int WelcomeWindowLoadingSpeed => 20;
 }

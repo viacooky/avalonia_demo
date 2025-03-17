@@ -11,7 +11,10 @@
               Title="AvaloniaDemo"
               x:DataType="vm:MainWindowViewModel">
     <u:UrsaWindow.RightContent>
-        <views:TitleBarRightView />
+        <views:TitleBarRightView Height="32"/>
     </u:UrsaWindow.RightContent>
-    <views:MainView Margin="0,40,0,0"/>
+    <u:UrsaWindow.LeftContent>
+        <views:TitleBarLeftView Height="32"/>
+    </u:UrsaWindow.LeftContent>
+    <views:MainView Margin="0,32,0,0" />
 </u:UrsaWindow>
