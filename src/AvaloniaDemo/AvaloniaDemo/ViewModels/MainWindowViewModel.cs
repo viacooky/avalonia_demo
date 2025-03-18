@@ -1,7 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿namespace AvaloniaDemo.ViewModels;
 
-namespace AvaloniaDemo.ViewModels;
-
-public partial class MainWindowViewModel: ViewModelBase
+public class MainWindowViewModel : ViewModelBase
 {
 }

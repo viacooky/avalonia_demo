@@ -3,26 +3,24 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="32"
-             xmlns:vm="clr-namespace:AvaloniaDemo.ViewModels"
              x:Class="AvaloniaDemo.Views.TitleBarLeftView"
+             xmlns:vm="clr-namespace:AvaloniaDemo.ViewModels"
              x:DataType="vm:TitleBarLeftViewModel">
     <Design.DataContext>
         <vm:TitleBarLeftViewModel />
     </Design.DataContext>
     <StackPanel Orientation="Horizontal">
-        <Image
-            Classes="Tertiary"
-            Width="{StaticResource SemiWidthIconLarge}"
-            Height="{StaticResource SemiWidthIconLarge}"
-            Theme="{StaticResource BorderlessIconButton}"
-            Source="{Binding Icon}" />
+        <Image Classes="Tertiary"
+               Width="{StaticResource SemiWidthIconLarge}"
+               Height="{StaticResource SemiWidthIconLarge}"
+               Theme="{StaticResource BorderlessIconButton}"
+               Source="{Binding Icon}" />
         <TextBlock VerticalAlignment="Center"
                    Margin="8,0"
                    FontWeight="Bold"
                    Text="{Binding Title}" />
-        <Label
-            Theme="{StaticResource TagLabel}"
-            Classes="Purple"
-            Content="{Binding Version}" />
+        <Label Theme="{StaticResource TagLabel}"
+               Classes="Purple"
+               Content="{Binding Version}" />
     </StackPanel>
 </UserControl>

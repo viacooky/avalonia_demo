@@ -2,10 +2,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:vm="clr-namespace:AvaloniaDemo.ViewModels"
-             xmlns:view="clr-namespace:AvaloniaDemo.Views"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="AvaloniaDemo.Views.MainView"
+             xmlns:vm="clr-namespace:AvaloniaDemo.ViewModels"
+             xmlns:view="clr-namespace:AvaloniaDemo.Views"
              x:DataType="vm:MainViewModel">
     <Design.DataContext>
         <vm:MainViewModel />
@@ -16,21 +16,18 @@
                 <Setter Property="Effect" Value="blur(10)" />
             </Style>
         </Panel.Styles>
-        <Grid
-            ColumnDefinitions="Auto, *">
-            <Border
-                Padding="8,0"
-                VerticalAlignment="Stretch"
-                Theme="{DynamicResource CardBorder}">
-                <view:MenuView/>
+        <Grid ColumnDefinitions="Auto, *">
+            <Border Padding="8,0"
+                    VerticalAlignment="Stretch"
+                    Theme="{DynamicResource CardBorder}">
+                <view:MenuView />
             </Border>
-            <Border
-                Grid.Column="1"
-                Padding="8,0"
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Stretch"
-                Theme="{DynamicResource CardBorder}">
-                <view:ContentView/>
+            <Border Grid.Column="1"
+                    Padding="8,0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    Theme="{DynamicResource CardBorder}">
+                <view:ContentView />
             </Border>
         </Grid>
     </Panel>

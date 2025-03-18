@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
@@ -11,9 +12,9 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace AvaloniaDemo;
 
-public partial class App : Application
+public class App : Application
 {
-    private ServiceCollection _services = new();
+    private readonly ServiceCollection _services = new();
 
     public override void Initialize()
     {
@@ -21,7 +22,7 @@ public partial class App : Application
     }
 
     /// <summary>
-    /// 初始化服务
+    ///     初始化服务
     /// </summary>
     /// <param name="services"></param>
     private void InitService(ServiceCollection services)
@@ -42,7 +43,7 @@ public partial class App : Application
 
         #endregion
 
-        var mainWindow = new MainWindow() { DataContext = new MainViewModel() };
+        var mainWindow = new MainWindow { DataContext = new MainViewModel() };
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             // Avoid duplicate validations from both Avalonia and the CommunityToolkit. 
@@ -59,7 +60,6 @@ public partial class App : Application
             singleViewPlatform.MainView = mainWindow;
         }
 
-
         base.OnFrameworkInitializationCompleted();
     }
 
@@ -70,9 +70,18 @@ public partial class App : Application
             BindingPlugins.DataValidators.OfType<DataAnnotationsValidationPlugin>().ToArray();
 
         // remove each entry found
-        foreach (var plugin in dataValidationPluginsToRemove)
-        {
-            BindingPlugins.DataValidators.Remove(plugin);
-        }
+        foreach (var plugin in dataValidationPluginsToRemove) BindingPlugins.DataValidators.Remove(plugin);
+    }
+
+    private void ShowWindow_OnClicked(object? sender, EventArgs e)
+    {
+        if (ApplicationLifetime is not IClassicDesktopStyleApplicationLifetime desktop) return;
+        desktop.MainWindow?.Show();
+        desktop.MainWindow?.Activate();
+    }
+
+    private void ExitApp_OnClicked(object? sender, EventArgs e)
+    {
+        Environment.Exit(0);
     }
 }

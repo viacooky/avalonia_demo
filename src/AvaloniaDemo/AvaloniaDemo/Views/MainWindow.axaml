@@ -2,21 +2,22 @@
               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
               xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
               xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+              x:Class="AvaloniaDemo.Views.MainWindow"
               xmlns:u="https://irihi.tech/ursa"
               xmlns:views="clr-namespace:AvaloniaDemo.Views"
               xmlns:vm="clr-namespace:AvaloniaDemo.ViewModels"
-              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-              x:Class="AvaloniaDemo.Views.MainWindow"
+              x:DataType="vm:MainWindowViewModel"
+              WindowStartupLocation="CenterScreen"
               Width="800"
               Height="450"
               Icon="/Assets/logo.ico"
-              Title="AvaloniaDemo"
-              x:DataType="vm:MainWindowViewModel">
+              Title="AvaloniaDemo">
     <u:UrsaWindow.RightContent>
-        <views:TitleBarRightView Height="{StaticResource SemiSpacingLoose}"/>
+        <views:TitleBarRightView Height="{StaticResource SemiSpacingLoose}" />
     </u:UrsaWindow.RightContent>
     <u:UrsaWindow.LeftContent>
-        <views:TitleBarLeftView Height="{StaticResource SemiSpacingLoose}" Margin="8,0"/>
+        <views:TitleBarLeftView Height="{StaticResource SemiSpacingLoose}" Margin="8,0" />
     </u:UrsaWindow.LeftContent>
     <views:MainView Margin="0,28,0,0" />
 </u:UrsaWindow>

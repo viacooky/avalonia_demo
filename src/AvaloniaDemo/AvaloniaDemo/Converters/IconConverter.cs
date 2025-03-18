@@ -12,10 +12,7 @@ public class IconConverter : IValueConverter
     public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
     {
         var icons = Ioc.Default.GetRequiredService<IconService>();
-        if (value is string key)
-        {
-            return icons.GetIcon(key) ?? AvaloniaProperty.UnsetValue;
-        }
+        if (value is string key) return icons.GetIcon(key) ?? AvaloniaProperty.UnsetValue;
 
         return AvaloniaProperty.UnsetValue;
     }

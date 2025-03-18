@@ -1,9 +1,5 @@
-﻿using Avalonia;
-using Avalonia.Controls;
-using Avalonia.Markup.Xaml;
-using AvaloniaDemo.Services;
+﻿using Avalonia.Controls;
 using AvaloniaDemo.ViewModels;
-using CommunityToolkit.Mvvm.DependencyInjection;
 
 namespace AvaloniaDemo.Views;
 

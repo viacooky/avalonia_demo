@@ -27,12 +27,12 @@ public partial class ContentViewModel : ViewModelBase
         try
         {
             var type = Type.GetType(typeName);
+            if (type == null) return;
             Content = Ioc.Default.GetService(type);
         }
-        catch (Exception e)
+        catch (Exception)
         {
             Content = null;
-            return;
         }
     }
 }

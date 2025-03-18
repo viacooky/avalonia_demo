@@ -1,6 +1,5 @@
 ﻿using AvaloniaDemo.Services;
 using AvaloniaDemo.ViewModels.Pages;
-using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.Extensions.DependencyInjection;
 using MenuItem = AvaloniaDemo.Models.MenuItem;
 
@@ -23,13 +22,13 @@ public class MainModule
         {
             Key = "menu1", Name = "menu1", Icon = "SemiIconAlarm", Children =
             [
-                new() { Key = "menu1-1", Name = "menu1-1" },
-                new()
+                new MenuItem { Key = "menu1-1", Name = "menu1-1" },
+                new MenuItem
                 {
                     Key = "menu1-2", Name = "menu1-2",
                     ViewModelType = "AvaloniaDemo.ViewModels.Pages.OverrideViewModel"
                 },
-                new() { Key = "menu1-3", Name = "menu1-3" }
+                new MenuItem { Key = "menu1-3", Name = "menu1-3" }
             ]
         });
     }

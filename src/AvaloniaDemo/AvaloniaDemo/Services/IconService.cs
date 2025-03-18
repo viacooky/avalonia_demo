@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using Avalonia.Controls;
 using Avalonia.Media;
 using Semi.Avalonia;
@@ -26,7 +25,7 @@ public class IconService
 
     public Geometry? GetIcon(string key)
     {
-        _icons.TryGetValue(key.ToLower(), out Geometry? geometry);
+        _icons.TryGetValue(key.ToLower(), out var geometry);
         return geometry;
     }
 }

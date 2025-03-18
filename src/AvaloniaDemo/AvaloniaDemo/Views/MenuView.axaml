@@ -12,7 +12,7 @@
     <Design.DataContext>
         <vm:MenuViewModel />
     </Design.DataContext>
-    
+
     <UserControl.Resources>
         <ResourceDictionary>
             <converters:IconConverter x:Key="IconConverter" />
@@ -66,14 +66,13 @@
                         </Border>
                     </ToggleSwitch.Content>
                 </ToggleSwitch>
-                <u:IconButton
-                    HorizontalAlignment="Left"
-                    Classes="Tertiary"
-                    Foreground="{DynamicResource SemiGrey5}"
-                    Icon="{StaticResource SemiIconSetting}"
-                    RenderTransform="{x:Null}"
-                    ToolTip.Tip="Settings"
-                    Theme="{DynamicResource BorderlessIconButton}">
+                <u:IconButton HorizontalAlignment="Left"
+                              Classes="Tertiary"
+                              Foreground="{DynamicResource SemiGrey5}"
+                              Icon="{StaticResource SemiIconSetting}"
+                              RenderTransform="{x:Null}"
+                              Theme="{DynamicResource BorderlessIconButton}"
+                              Command="{Binding OpenSettingsCommand}">
                 </u:IconButton>
             </StackPanel>
         </u:NavMenu.Footer>

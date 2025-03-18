@@ -13,12 +13,9 @@ public class ViewLocator : IDataTemplate
             return null;
 
         var name = param.GetType().Name!.Replace("ViewModel", "View", StringComparison.Ordinal);
-        var type = Type.GetType("AvaloniaDemo.Views.Pages."+name);
+        var type = Type.GetType("AvaloniaDemo.Views.Pages." + name);
 
-        if (type != null)
-        {
-            return (Control)Activator.CreateInstance(type)!;
-        }
+        if (type != null) return (Control)Activator.CreateInstance(type)!;
 
         return new TextBlock { Text = "Not Found: " + name };
     }

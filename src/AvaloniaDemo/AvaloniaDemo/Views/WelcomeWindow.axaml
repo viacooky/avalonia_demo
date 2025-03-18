@@ -10,40 +10,37 @@
                 Title="Welcome"
                 Width="380"
                 Height="160">
-    <Grid
-        HorizontalAlignment="Center"
-        VerticalAlignment="Center"
-        ColumnDefinitions="Auto, Auto"
-        RowDefinitions="Auto, Auto, Auto">
-        <TextBlock
-            Grid.Row="0"
-            Grid.Column="0"
-            Width="64"
-            Margin="0,0,16,0"
-            Background="Aqua"
-            Text="" />
+    <Design.DataContext>
+        <vm:WelcomeWindowViewModel />
+    </Design.DataContext>
+    <Grid HorizontalAlignment="Center"
+          VerticalAlignment="Center"
+          ColumnDefinitions="Auto, Auto"
+          RowDefinitions="Auto, Auto, Auto">
+        <TextBlock Grid.Row="0"
+                   Grid.Column="0"
+                   Width="64"
+                   Margin="0,0,16,0"
+                   Background="Aqua"
+                   Text="" />
         <StackPanel Grid.Row="0" Grid.Column="1">
-            <TextBlock
-                Classes="H2"
-                Text="{Binding Title}"
-                Theme="{DynamicResource TitleTextBlock}" />
+            <TextBlock Classes="H2"
+                       Text="{Binding Title}"
+                       Theme="{DynamicResource TitleTextBlock}" />
             <TextBlock FontWeight="Bold" Text="{Binding SubTitle}" />
         </StackPanel>
-        <ProgressBar
-            Grid.Row="1"
-            Grid.Column="0"
-            Grid.ColumnSpan="2"
-            Margin="0,16,0,0"
-            Value="{Binding Progress}" />
-        <StackPanel
-            Grid.Row="2"
-            Grid.Column="0"
-            Grid.ColumnSpan="2">
-            <TextBlock
-                Margin="0,12,0,0"
-                HorizontalAlignment="Center"
-                FontSize="12"
-                Text="Loading..." />
+        <ProgressBar Grid.Row="1"
+                     Grid.Column="0"
+                     Grid.ColumnSpan="2"
+                     Margin="0,16,0,0"
+                     Value="{Binding Progress}" />
+        <StackPanel Grid.Row="2"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2">
+            <TextBlock Margin="0,12,0,0"
+                       HorizontalAlignment="Center"
+                       FontSize="12"
+                       Text="{Binding Loading}" />
         </StackPanel>
     </Grid>
 </u:SplashWindow>

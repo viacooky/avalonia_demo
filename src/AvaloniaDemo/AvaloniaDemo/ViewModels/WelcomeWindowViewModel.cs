@@ -1,6 +1,5 @@
 ﻿using System;
 using Avalonia.Threading;
-using AvaloniaDemo.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Irihi.Avalonia.Shared.Contracts;
 
@@ -10,7 +9,7 @@ public partial class WelcomeWindowViewModel : ObservableObject, IDialogContext
 {
     [ObservableProperty] private string _title = AppSettings.WelcomeWindowTitle;
     [ObservableProperty] private string _subTitle = AppSettings.WelcomeWindowSubTitle;
-
+    [ObservableProperty] private string _loading = AppSettings.WelcomeWindowLoadingStr;
     [ObservableProperty] private double _progress;
 
     private Random _r = new();
