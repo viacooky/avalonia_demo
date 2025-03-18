@@ -5,93 +5,77 @@
              mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="450"
              xmlns:u="https://irihi.tech/ursa"
              xmlns:vm="clr-namespace:AvaloniaDemo.ViewModels"
+             xmlns:models="clr-namespace:AvaloniaDemo.Models"
+             xmlns:converters="clr-namespace:AvaloniaDemo.Converters"
              x:Class="AvaloniaDemo.Views.MenuView"
              x:DataType="vm:MenuViewModel">
     <Design.DataContext>
-        <vm:MenuViewModel/>
+        <vm:MenuViewModel />
     </Design.DataContext>
+    
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <converters:IconConverter x:Key="IconConverter" />
+        </ResourceDictionary>
+    </UserControl.Resources>
     <u:NavMenu Name="menu"
                ExpandWidth="200"
-               IsHorizontalCollapsed="{Binding #collapse.IsChecked, Mode=OneWay}">
-        <u:NavMenu.Header>
-            <StackPanel Orientation="Horizontal">
+               Padding="{StaticResource SemiThicknessTight}"
+               IsHorizontalCollapsed="{Binding #collapse.IsChecked, Mode=OneWay}"
+               ItemsSource="{Binding MenuItems}"
+               HeaderBinding="{Binding Name}"
+               IconBinding="{Binding Icon}"
+               SubMenuBinding="{Binding Children}"
+               CommandBinding="{Binding ActivateCommand}">
+        <u:NavMenu.IconTemplate>
+            <DataTemplate DataType="{x:Type x:String}">
+                <u:TwoTonePathIcon
+                    Width="16"
+                    Height="16"
+                    ActiveForeground="{DynamicResource SemiBlue5}"
+                    ActiveStrokeBrush="{DynamicResource SemiBlue5}"
+                    Foreground="{DynamicResource SemiGrey5}"
+                    StrokeBrush="{DynamicResource SemiGrey5}"
+                    IsActive="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=u:NavMenuItem}, Path=IsHighlighted, Mode=TwoWay}"
+                    Data="{Binding Converter={StaticResource IconConverter}}" />
+            </DataTemplate>
+        </u:NavMenu.IconTemplate>
+        <u:NavMenu.HeaderTemplate>
+            <DataTemplate x:DataType="models:MenuItem">
+                <StackPanel Orientation="Horizontal" Spacing="{StaticResource SemiSpacingExtraTight}">
+                    <TextBlock HorizontalAlignment="Right" FontSize="18" Text="{Binding Name}" />
+                </StackPanel>
+            </DataTemplate>
+        </u:NavMenu.HeaderTemplate>
+        <u:NavMenu.Footer>
+            <StackPanel>
                 <ToggleSwitch
                     Name="collapse"
+                    Padding="0"
                     HorizontalAlignment="Left"
-                    Padding="{StaticResource SemiThicknessTight}"
                     Theme="{DynamicResource ButtonToggleSwitch}"
                     Foreground="{DynamicResource ButtonDefaultTertiaryForeground}">
                     <ToggleSwitch.Content>
-                        <PathIcon
-                            Height="{StaticResource SemiWidthIconExtraLarge}"
-                            Width="{StaticResource SemiWidthIconExtraLarge}"
-                            Theme="{DynamicResource InnerPathIcon}"
-                            Data="{StaticResource SemiIconSidebar}" />
+                        <Border Margin="6">
+                            <PathIcon
+                                Foreground="{DynamicResource SemiGrey5}"
+                                Height="{StaticResource IconElementThemeHeight}"
+                                Width="{StaticResource IconElementThemeHeight}"
+                                Theme="{DynamicResource InnerPathIcon}"
+                                Data="{StaticResource SemiIconSidebar}" />
+                        </Border>
                     </ToggleSwitch.Content>
                 </ToggleSwitch>
-                <TextBlock
-                    VerticalAlignment="Center"
-                    Classes="H4"
-                    Margin="16 0 0 0"
-                    IsVisible="{Binding !#menu.IsHorizontalCollapsed}"
-                    Text="Ursa"
-                    Theme="{DynamicResource TitleTextBlock}" />
+                <u:IconButton
+                    HorizontalAlignment="Left"
+                    Classes="Tertiary"
+                    Foreground="{DynamicResource SemiGrey5}"
+                    Icon="{StaticResource SemiIconSetting}"
+                    RenderTransform="{x:Null}"
+                    ToolTip.Tip="Settings"
+                    Theme="{DynamicResource BorderlessIconButton}">
+                </u:IconButton>
             </StackPanel>
-        </u:NavMenu.Header>
-        <u:NavMenuItem Header="Menu 1">
-            <u:NavMenuItem.Icon>
-                <PathIcon
-                    Margin="2,0"
-                    Height="{StaticResource SemiWidthIconExtraLarge}"
-                    Width="{StaticResource SemiWidthIconExtraLarge}"
-                    Theme="{DynamicResource InnerPathIcon}"
-                    Data="{StaticResource SemiIconFolder}" />
-            </u:NavMenuItem.Icon>
-            <u:NavMenuItem Header="Sub Menu 1">
-                <u:NavMenuItem.Icon>
-                    <PathIcon
-                        Height="{StaticResource SemiWidthIconLarge}"
-                        Width="{StaticResource SemiWidthIconLarge}"
-                        Theme="{DynamicResource InnerPathIcon}"
-                        Data="{StaticResource SemiIconFolder}" />
-                </u:NavMenuItem.Icon>
-            </u:NavMenuItem>
-            <u:NavMenuItem Header="Sub Menu 2">
-                <u:NavMenuItem.Icon>
-                    <PathIcon
-                        Height="{StaticResource SemiWidthIconLarge}"
-                        Width="{StaticResource SemiWidthIconLarge}"
-                        Theme="{DynamicResource InnerPathIcon}"
-                        Data="{StaticResource SemiIconFolder}" />
-                </u:NavMenuItem.Icon>
-            </u:NavMenuItem>
-            <u:NavMenuItem Header="Sub Menu 3" >
-                <u:NavMenuItem.Icon>
-                    <PathIcon
-                        Height="{StaticResource SemiWidthIconLarge}"
-                        Width="{StaticResource SemiWidthIconLarge}"
-                        Theme="{DynamicResource InnerPathIcon}"
-                        Data="{StaticResource SemiIconFolder}" />
-                </u:NavMenuItem.Icon>
-                <u:NavMenuItem Header="Sub Menu 1">
-                    <u:NavMenuItem.Icon>
-                        <PathIcon
-                            Height="{StaticResource SemiWidthIconLarge}"
-                            Width="{StaticResource SemiWidthIconLarge}"
-                            Theme="{DynamicResource InnerPathIcon}"
-                            Data="{StaticResource SemiIconFolder}" />
-                    </u:NavMenuItem.Icon>
-                </u:NavMenuItem>
-                <u:NavMenuItem Header="Sub Menu 2">
-                    <u:NavMenuItem.Icon>
-                        <PathIcon
-                            Height="{StaticResource SemiWidthIconLarge}"
-                            Width="{StaticResource SemiWidthIconLarge}"
-                            Theme="{DynamicResource InnerPathIcon}"
-                            Data="{StaticResource SemiIconFolder}" />
-                    </u:NavMenuItem.Icon>
-                </u:NavMenuItem>
-            </u:NavMenuItem>
-            </u:NavMenuItem>
+        </u:NavMenu.Footer>
     </u:NavMenu>
 </UserControl>

@@ -4,8 +4,13 @@ public static class AppSettings
 {
     public static string AppName => "AvaloniaDemo";
     public static string AppVersion => "1.0.0.0";
+
+    /// <summary>
+    /// 在Assets目录下
+    /// </summary>
+    public static string IconPath => "logo.ico";
     
-    // TitleBar
+    // TitleBar Right
     public static string TitleBarGithubUrl => "https://github.com/neuz";
     
     
@@ -16,5 +21,5 @@ public static class AppSettings
     /// <summary>
     /// loading加载速度 默认3x
     /// </summary>
-    public static int WelcomeWindowLoadingSpeed => 20;
+    public static int WelcomeWindowLoadingSpeed => 10;
 }

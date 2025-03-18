@@ -10,17 +10,18 @@ namespace AvaloniaDemo.Views;
 
 public partial class WelcomeWindow : SplashWindow
 {
-    public WelcomeWindow()
+    private MainWindow _mainWindow;
+    public WelcomeWindow(MainWindow mainWindow)
     {
         InitializeComponent();
+        _mainWindow = mainWindow;
     }
 
     protected override async Task<Window?> CreateNextWindow()
     {
-        var mainWindow = Ioc.Default.GetRequiredService<MainWindow>();
         if (DialogResult is true)
         {
-            return mainWindow;
+            return _mainWindow;
         }
         else
         {

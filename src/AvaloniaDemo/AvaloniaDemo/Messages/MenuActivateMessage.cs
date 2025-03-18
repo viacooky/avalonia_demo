@@ -5,10 +5,10 @@ namespace AvaloniaDemo.Messages;
 
 public class MenuActivateMessage : ValueChangedMessage<MenuItem>
 {
-    public MenuItem? CurrentMenuItem { get; private set; }
+    public MenuItem? MenuItem { get; private set; }
 
     public MenuActivateMessage(MenuItem menuItem) : base(menuItem)
     {
-        CurrentMenuItem = menuItem;
+        MenuItem = menuItem;
     }
 }

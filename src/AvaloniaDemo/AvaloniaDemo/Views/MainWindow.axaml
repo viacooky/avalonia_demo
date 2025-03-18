@@ -7,14 +7,16 @@
               xmlns:vm="clr-namespace:AvaloniaDemo.ViewModels"
               mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
               x:Class="AvaloniaDemo.Views.MainWindow"
+              Width="800"
+              Height="450"
               Icon="/Assets/logo.ico"
               Title="AvaloniaDemo"
               x:DataType="vm:MainWindowViewModel">
     <u:UrsaWindow.RightContent>
-        <views:TitleBarRightView Height="32"/>
+        <views:TitleBarRightView Height="{StaticResource SemiSpacingLoose}"/>
     </u:UrsaWindow.RightContent>
     <u:UrsaWindow.LeftContent>
-        <views:TitleBarLeftView Height="32"/>
+        <views:TitleBarLeftView Height="{StaticResource SemiSpacingLoose}" Margin="8,0"/>
     </u:UrsaWindow.LeftContent>
-    <views:MainView Margin="0,32,0,0" />
+    <views:MainView Margin="0,28,0,0" />
 </u:UrsaWindow>

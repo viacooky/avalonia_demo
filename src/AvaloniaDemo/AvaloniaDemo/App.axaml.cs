@@ -27,17 +27,9 @@ public partial class App : Application
     private void InitService(ServiceCollection services)
     {
         var menuService = new MenuService();
-        services.AddSingleton(menuService);//菜单服务
-        MainModule.Init(services,menuService);
-    }
-
-    /// <summary>
-    /// 初始化模块
-    /// </summary>
-    /// <param name="services"></param>
-    private void InitModule(ServiceCollection services)
-    {
-        
+        MainModule.Init(services, menuService); // 主模块初始化
+        services.AddSingleton(menuService); // 菜单服务
+        services.AddSingleton<IconService>(); //icon服务
     }
 
     public override void OnFrameworkInitializationCompleted()
@@ -45,12 +37,12 @@ public partial class App : Application
         #region 注册服务
 
         InitService(_services);
+
         Ioc.Default.ConfigureServices(_services.BuildServiceProvider());
 
         #endregion
 
-        
-        var mainWindow = Ioc.Default.GetRequiredService<MainWindow>();
+        var mainWindow = new MainWindow() { DataContext = new MainViewModel() };
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             // Avoid duplicate validations from both Avalonia and the CommunityToolkit. 
@@ -58,7 +50,7 @@ public partial class App : Application
             DisableAvaloniaDataAnnotationValidation();
 
             if (AppSettings.WelcomeWindowEnable)
-                desktop.MainWindow = new WelcomeWindow() { DataContext = new WelcomeWindowViewModel() };
+                desktop.MainWindow = new WelcomeWindow(mainWindow) { DataContext = new WelcomeWindowViewModel() };
             else
                 desktop.MainWindow = mainWindow;
         }

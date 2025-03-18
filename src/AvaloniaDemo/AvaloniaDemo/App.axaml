@@ -5,17 +5,17 @@
              xmlns:dt="clr-namespace:AvaloniaDemo.DataTemplates"
              x:Class="AvaloniaDemo.App"
              RequestedThemeVariant="Light">
-            <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+    <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
 
     <Application.DataTemplates>
         <dt:ViewLocator />
     </Application.DataTemplates>
-            
+
     <Application.Styles>
         <semi:SemiTheme Locale="zh-CN" />
         <!-- 开启弹窗框动画 -->
         <semi:SemiPopupAnimations />
-        
+
         <u:SemiTheme Locale="zh-CN" />
     </Application.Styles>
 </Application>

@@ -19,16 +19,19 @@
         <Grid
             ColumnDefinitions="Auto, *">
             <Border
-                Padding="8,4"
+                Padding="8,0"
                 VerticalAlignment="Stretch"
                 Theme="{DynamicResource CardBorder}">
                 <view:MenuView/>
             </Border>
-            <TextBlock
+            <Border
                 Grid.Column="1"
-                Theme="{DynamicResource CardBorder}"
-                Margin="4"
-                Background="Aqua" />
+                Padding="8,0"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Theme="{DynamicResource CardBorder}">
+                <view:ContentView/>
+            </Border>
         </Grid>
     </Panel>
 </UserControl>

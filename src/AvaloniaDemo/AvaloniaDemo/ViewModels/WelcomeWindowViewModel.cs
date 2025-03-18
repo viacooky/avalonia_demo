@@ -1,5 +1,6 @@
 ﻿using System;
 using Avalonia.Threading;
+using AvaloniaDemo.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Irihi.Avalonia.Shared.Contracts;
 
