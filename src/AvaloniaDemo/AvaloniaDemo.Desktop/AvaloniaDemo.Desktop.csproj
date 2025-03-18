@@ -6,6 +6,11 @@
         <TargetFramework>net8.0</TargetFramework>
         <Nullable>enable</Nullable>
         <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+        <!-- Native AOT-->
+        <PublishAot>true</PublishAot>
+        <!-- Recommended Avalonia trimming settings for Native AOT -->
+        <BuiltInComInteropSupport>false</BuiltInComInteropSupport>
+        <TrimMode>link</TrimMode>
     </PropertyGroup>
 
     <PropertyGroup>
