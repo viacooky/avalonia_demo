@@ -1,6 +1,8 @@
 ﻿using System;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform;
+using AvaloniaDemo.Shared.Models;
+using AvaloniaDemo.Shared.ViewModels;
 
 namespace AvaloniaDemo.ViewModels;
 

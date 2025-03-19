@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
+        <TargetFramework>netstandard2.0</TargetFramework>
         <Nullable>enable</Nullable>
         <LangVersion>latest</LangVersion>
         <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
@@ -8,6 +8,10 @@
 
     <ItemGroup>
         <AvaloniaResource Include="Assets\**"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <TrimmerRootDescriptor Include="Roots.xml" />
     </ItemGroup>
 
     <ItemGroup>
@@ -28,5 +32,19 @@
     <ItemGroup>
       <UpToDateCheckInput Remove="Themes\_index.axaml" />
       <UpToDateCheckInput Remove="Themes\_index.axaml" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Messages\" />
+      <Folder Include="Models\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\AvaloniaDemo.Modules.Sample\AvaloniaDemo.Modules.Sample.csproj" />
+      <ProjectReference Include="..\AvaloniaDemo.Shared\AvaloniaDemo.Shared.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageVersion Update="CommunityToolkit.Mvvm" Version="8.4.0" />
     </ItemGroup>
 </Project>

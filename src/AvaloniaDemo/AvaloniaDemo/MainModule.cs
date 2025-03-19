@@ -1,35 +1,23 @@
-﻿using AvaloniaDemo.Services;
-using AvaloniaDemo.ViewModels.Pages;
+﻿using AvaloniaDemo.Shared;
+using AvaloniaDemo.Shared.Services;
+using AvaloniaDemo.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
-using MenuItem = AvaloniaDemo.Models.MenuItem;
 
 namespace AvaloniaDemo;
 
-public class MainModule
+public class MainModule : ModuleBase
 {
-    public static void Init(ServiceCollection services, MenuService menuService)
+    public override IServiceCollection ConfigureServices(IServiceCollection services)
     {
-        // 添加VM
-        services.AddSingleton(new OverrideViewModel());
+        services.AddSingleton<IconService>(); //icon服务
 
-        // 添加菜单
-        menuService.AddMenu(new MenuItem
-        {
-            Key = "Override", Name = "Override", Icon = "SemiIconAlarm",
-            ViewModelType = "AvaloniaDemo.ViewModels.Pages.OverrideViewModel"
-        });
-        menuService.AddMenu(new MenuItem
-        {
-            Key = "menu1", Name = "menu1", Icon = "SemiIconAlarm", Children =
-            [
-                new MenuItem { Key = "menu1-1", Name = "menu1-1" },
-                new MenuItem
-                {
-                    Key = "menu1-2", Name = "menu1-2",
-                    ViewModelType = "AvaloniaDemo.ViewModels.Pages.OverrideViewModel"
-                },
-                new MenuItem { Key = "menu1-3", Name = "menu1-3" }
-            ]
-        });
+        services.AddSingleton<MainViewModel>();
+        services.AddSingleton<WelcomeWindowViewModel>();
+
+        return base.ConfigureServices(services);
+    }
+
+    public override void ConfigureMenuService(MenuService menuService)
+    {
     }
 }

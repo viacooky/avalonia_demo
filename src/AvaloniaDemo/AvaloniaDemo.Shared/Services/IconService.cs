@@ -3,7 +3,7 @@ using Avalonia.Controls;
 using Avalonia.Media;
 using Semi.Avalonia;
 
-namespace AvaloniaDemo.Services;
+namespace AvaloniaDemo.Shared.Services;
 
 public class IconService
 {

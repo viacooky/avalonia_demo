@@ -4,7 +4,9 @@ using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
-using AvaloniaDemo.Services;
+using AvaloniaDemo.Modules.Sample;
+using AvaloniaDemo.Shared.Extensions;
+using AvaloniaDemo.Shared.Services;
 using AvaloniaDemo.ViewModels;
 using AvaloniaDemo.Views;
 using CommunityToolkit.Mvvm.DependencyInjection;
@@ -14,8 +16,6 @@ namespace AvaloniaDemo;
 
 public class App : Application
 {
-    private readonly ServiceCollection _services = new();
-
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);
@@ -25,25 +25,23 @@ public class App : Application
     ///     初始化服务
     /// </summary>
     /// <param name="services"></param>
-    private void InitService(ServiceCollection services)
+    private void InitService()
     {
         var menuService = new MenuService();
-        MainModule.Init(services, menuService); // 主模块初始化
-        services.AddSingleton(menuService); // 菜单服务
-        services.AddSingleton<IconService>(); //icon服务
+        var provider = new ServiceCollection()
+            .AddSingleton(menuService) 
+            .InitModule<MainModule>(menuService) // 主模块
+            .InitModule<SampleModule>(menuService) // sample 模块
+            .BuildServiceProvider();
+
+        Ioc.Default.ConfigureServices(provider);
     }
 
     public override void OnFrameworkInitializationCompleted()
     {
-        #region 注册服务
+        InitService();
 
-        InitService(_services);
-
-        Ioc.Default.ConfigureServices(_services.BuildServiceProvider());
-
-        #endregion
-
-        var mainWindow = new MainWindow { DataContext = new MainViewModel() };
+        var mainWindow = new MainWindow { DataContext = Ioc.Default.GetRequiredService<MainViewModel>() };
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             // Avoid duplicate validations from both Avalonia and the CommunityToolkit. 
@@ -51,9 +49,16 @@ public class App : Application
             DisableAvaloniaDataAnnotationValidation();
 
             if (AppSettings.WelcomeWindowEnable)
-                desktop.MainWindow = new WelcomeWindow(mainWindow) { DataContext = new WelcomeWindowViewModel() };
+            {
+                desktop.MainWindow = new WelcomeWindow(mainWindow)
+                {
+                    DataContext = Ioc.Default.GetRequiredService<WelcomeWindowViewModel>()
+                };
+            }
             else
+            {
                 desktop.MainWindow = mainWindow;
+            }
         }
         else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewPlatform)
         {

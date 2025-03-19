@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <LangVersion>latest</LangVersion>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Avalonia" />
+      <PackageReference Include="Avalonia.Diagnostics" />
+      <PackageReference Include="Avalonia.Fonts.Inter" />
+      <PackageReference Include="CommunityToolkit.Mvvm" />
+      <PackageReference Include="Irihi.Ursa.Themes.Semi" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+      <PackageReference Include="Semi.Avalonia" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\AvaloniaDemo.Shared\AvaloniaDemo.Shared.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageVersion Update="CommunityToolkit.Mvvm" Version="8.4.0" />
+    </ItemGroup>
+
+</Project>

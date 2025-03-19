@@ -1,4 +1,6 @@
 ﻿using System;
+using AvaloniaDemo.Shared.Models;
+using AvaloniaDemo.Shared.ViewModels;
 using AvaloniaDemo.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.DependencyInjection;

@@ -1,0 +1,6 @@
+﻿<linker>
+    <assembly fullname="AvaloniaDemo.Desktop" preserve="All" />
+    <assembly fullname="AvaloniaDemo" preserve="All" />
+    <assembly fullname="AvaloniaDemo.Modules.Sample" preserve="All" />
+    <assembly fullname="AvaloniaDemo.Shared" preserve="All" />
+</linker>

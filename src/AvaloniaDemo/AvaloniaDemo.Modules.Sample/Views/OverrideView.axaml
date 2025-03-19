@@ -3,10 +3,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             xmlns:vm="clr-namespace:AvaloniaDemo.ViewModels.Pages"
-             x:DataType="vm:OverrideViewModel"
-             x:Class="AvaloniaDemo.Views.Pages.OverrideView">
-    <StackPanel Background="Aqua">
-        <TextBlock Text="{Binding Text}" />
-    </StackPanel>
+             x:Class="AvaloniaDemo.Modules.Sample.Views.OverrideView"
+             xmlns:vm="clr-namespace:AvaloniaDemo.Modules.Sample.ViewModels"
+             x:DataType="vm:OverrideViewModel">
+    <Design.DataContext>
+        <vm:OverrideViewModel />
+    </Design.DataContext>
+    <TextBlock Text="{Binding Tt}"></TextBlock>
 </UserControl>

@@ -1,7 +1,7 @@
 ﻿using System.Collections.ObjectModel;
-using AvaloniaDemo.Models;
+using AvaloniaDemo.Shared.Models;
 
-namespace AvaloniaDemo.Services;
+namespace AvaloniaDemo.Shared.Services;
 
 public class MenuService
 {

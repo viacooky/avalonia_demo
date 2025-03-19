@@ -5,7 +5,7 @@
              mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="450"
              xmlns:u="https://irihi.tech/ursa"
              xmlns:vm="clr-namespace:AvaloniaDemo.ViewModels"
-             xmlns:models="clr-namespace:AvaloniaDemo.Models"
+             xmlns:models="clr-namespace:AvaloniaDemo.Shared.Models;assembly=AvaloniaDemo.Shared"
              xmlns:converters="clr-namespace:AvaloniaDemo.Converters"
              x:Class="AvaloniaDemo.Views.MenuView"
              x:DataType="vm:MenuViewModel">

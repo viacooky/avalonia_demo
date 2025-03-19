@@ -1,10 +1,11 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Windows.Input;
-using AvaloniaDemo.Messages;
+using AvaloniaDemo.Shared.Messages;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 
-namespace AvaloniaDemo.Models;
+namespace AvaloniaDemo.Shared.Models;
 
 public class MenuItem
 {
@@ -21,7 +22,8 @@ public class MenuItem
     public ICommand ActivateCommand { get; }
     public ObservableCollection<MenuItem> Children { get; set; } = new();
 
-    public string ViewModelType { get; set; } = string.Empty;
+    public Type ViewModelType { get; set; } 
+    public Type ViewType { get; set; } 
 
     private void OnActivate()
     {

@@ -1,5 +1,7 @@
 ﻿using System;
-using AvaloniaDemo.Messages;
+using AvaloniaDemo.Shared.Messages;
+using AvaloniaDemo.Shared.Models;
+using AvaloniaDemo.Shared.ViewModels;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.DependencyInjection;
 using CommunityToolkit.Mvvm.Messaging;
@@ -17,18 +19,15 @@ public partial class ContentViewModel : ViewModelBase
 
     private void OnNavigation(ContentViewModel recipient, MenuActivateMessage message)
     {
-        var typeName = message.MenuItem?.ViewModelType;
-        if (string.IsNullOrEmpty(typeName))
-        {
-            Content = null;
-            return;
-        }
-
         try
         {
-            var type = Type.GetType(typeName);
-            if (type == null) return;
-            Content = Ioc.Default.GetService(type);
+            var viewModelType = message.MenuItem?.ViewModelType;
+            if (viewModelType == null)
+            {
+                Content = null;
+                return;
+            }
+            Content = Ioc.Default.GetService(viewModelType);
         }
         catch (Exception)
         {

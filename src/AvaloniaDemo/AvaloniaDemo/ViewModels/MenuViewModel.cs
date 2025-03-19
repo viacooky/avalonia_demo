@@ -1,8 +1,9 @@
 ﻿using System.Collections.ObjectModel;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
-using AvaloniaDemo.Models;
-using AvaloniaDemo.Services;
+using AvaloniaDemo.Shared.Models;
+using AvaloniaDemo.Shared.Services;
+using AvaloniaDemo.Shared.ViewModels;
 using AvaloniaDemo.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.DependencyInjection;

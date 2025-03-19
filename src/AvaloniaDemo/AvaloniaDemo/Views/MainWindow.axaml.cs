@@ -24,6 +24,7 @@ public partial class MainWindow : UrsaWindow
             Hide(); // 隐藏主窗体
             return;
         }
+        // todo: 这里要处理托盘图标
         base.OnClosing(e);
     }
 }

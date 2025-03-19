@@ -1,7 +1,7 @@
-﻿using AvaloniaDemo.Models;
+﻿using AvaloniaDemo.Shared.Models;
 using CommunityToolkit.Mvvm.Messaging.Messages;
 
-namespace AvaloniaDemo.Messages;
+namespace AvaloniaDemo.Shared.Messages;
 
 public class MenuActivateMessage : ValueChangedMessage<MenuItem>
 {

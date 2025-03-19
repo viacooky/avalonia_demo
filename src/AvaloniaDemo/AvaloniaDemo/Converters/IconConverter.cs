@@ -2,7 +2,7 @@
 using System.Globalization;
 using Avalonia;
 using Avalonia.Data.Converters;
-using AvaloniaDemo.Services;
+using AvaloniaDemo.Shared.Services;
 using CommunityToolkit.Mvvm.DependencyInjection;
 
 namespace AvaloniaDemo.Converters;

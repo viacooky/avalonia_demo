@@ -1,7 +1,10 @@
 using System;
+using System.Linq;
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
-using AvaloniaDemo.ViewModels;
+using AvaloniaDemo.Shared.Services;
+using AvaloniaDemo.Shared.ViewModels;
+using CommunityToolkit.Mvvm.DependencyInjection;
 
 namespace AvaloniaDemo.DataTemplates;
 
@@ -9,15 +12,16 @@ public class ViewLocator : IDataTemplate
 {
     public Control? Build(object? param)
     {
-        if (param is null)
-            return null;
+        if (param is null) return null;
 
-        var name = param.GetType().Name!.Replace("ViewModel", "View", StringComparison.Ordinal);
-        var type = Type.GetType("AvaloniaDemo.Views.Pages." + name);
+        var menuService = Ioc.Default.GetRequiredService<MenuService>();
+        var viewType = menuService.MenuItems
+            .FirstOrDefault(m => m.ViewModelType == param.GetType())
+            ?.ViewType;
 
-        if (type != null) return (Control)Activator.CreateInstance(type)!;
+        if (viewType is null) return new TextBlock { Text = "ViewType Not Found: " };
 
-        return new TextBlock { Text = "Not Found: " + name };
+        return (Control)Activator.CreateInstance(viewType);
     }
 
     public bool Match(object? data)
