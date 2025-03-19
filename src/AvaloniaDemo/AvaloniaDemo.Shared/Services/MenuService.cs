@@ -7,8 +7,9 @@ public class MenuService
 {
     public ObservableCollection<MenuItem> MenuItems { get; } = [];
 
-    public void AddMenu(MenuItem menuItem)
+    public MenuService AddMenu(MenuItem menuItem)
     {
         MenuItems.Add(menuItem);
+        return this;
     }
 }

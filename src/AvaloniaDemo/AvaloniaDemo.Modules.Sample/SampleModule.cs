@@ -11,18 +11,28 @@ public class SampleModule : ModuleBase
 {
     public override IServiceCollection ConfigureServices(IServiceCollection services)
     {
-        services.AddSingleton<OverrideViewModel>();
+        services
+            .AddSingleton<OverrideViewModel>()
+            .AddSingleton<ManagedFileViewModel>();
         return base.ConfigureServices(services);
     }
-    
+
     public override void ConfigureMenuService(MenuService menuService)
     {
-        menuService.AddMenu(new MenuItem
-        {
-            Key = "Override", Name = "Override", Icon = "SemiIconAlarm",
-            ViewModelType = typeof(OverrideViewModel),
-            ViewType = typeof(OverrideView)
-        });
+        menuService
+            .AddMenu(new MenuItem
+            {
+                Key = "Override", Name = "Override", Icon = "SemiIconAlarm",
+                ViewModelType = typeof(OverrideViewModel),
+                ViewType = typeof(OverrideView)
+            })
+            .AddMenu(new MenuItem
+            {
+                Key = "ManagedFile", Name = "文件/目录选择", Icon = "SemiIconFile",
+                ViewModelType = typeof(ManagedFileViewModel),
+                ViewType = typeof(ManagedFileView)
+            });
+
         base.ConfigureMenuService(menuService);
     }
 }

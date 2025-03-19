@@ -1,0 +1,20 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="AvaloniaDemo.Modules.Sample.Views.ManagedFileView"
+             xmlns:vm="clr-namespace:AvaloniaDemo.Modules.Sample.ViewModels"
+             x:DataType="vm:ManagedFileViewModel">
+    <Design.DataContext>
+        <vm:ManagedFileViewModel />
+    </Design.DataContext>
+    <StackPanel>
+        <Button Content="选择文件" Command="{Binding OpenFileCommand}"/>
+        <TextBlock Text="当前选择文件："></TextBlock>
+        <TextBlock Text="{Binding FileName}"></TextBlock>
+        <Button Content="选择目录" Command="{Binding OpenFolderCommand }"/>
+        <TextBlock Text="当前选择目录："></TextBlock>
+        <TextBlock Text="{Binding Folder}"></TextBlock>
+    </StackPanel>
+</UserControl>
